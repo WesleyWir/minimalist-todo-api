@@ -1,5 +1,6 @@
 
 
+import { Hasher } from '@/data/protocols';
 import { CreateUserRepository } from '@/data/protocols/user/create-user-repository'
 import { CreateUser } from '@/domain/usecases'
 import * as bcrypt from 'bcrypt';
@@ -7,6 +8,7 @@ import * as bcrypt from 'bcrypt';
 export class CreateUserUseCase implements CreateUser {
     constructor(
         private readonly createUserRepository: CreateUserRepository,
+        private readonly hasher: Hasher,
     ) { }
 
     async create(data: CreateUserRepository.Params): Promise<CreateUserRepository.Result> {
