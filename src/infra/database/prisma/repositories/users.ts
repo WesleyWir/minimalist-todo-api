@@ -3,8 +3,6 @@ import { prismaClient } from "@/infra/database/prisma/prismaClient";
 
 export class UsersRepository implements CreateUserRepository {
     async create(data: CreateUserRepository.Params): Promise<CreateUserRepository.Result> {
-        return prismaClient.user.create({
-            data
-        });
-    };
+        return prismaClient.user.create({ data });
+    }
 }

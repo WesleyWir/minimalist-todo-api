@@ -1,7 +1,19 @@
 import { makeCreateUserController } from '@/main/factories'
 import { adaptRoute } from '@/main/adapters'
 import { Router } from 'express'
+const { body, validationResult } = require('express-validator');
 
 export default (router: Router): void => {
-  router.post('/users', adaptRoute(makeCreateUserController()))
+  router.post(
+    '/users/signup',
+    body('name').not().isEmpty(),
+    body('password').not().isEmpty(),
+    body('password_confirmation').custom((value: any, { req }: any) => {
+      if (value !== req.body.password) {
+        throw new Error('Password confirmation does not match password');
+      }  
+      return true;
+    }),
+    body('email').isEmail(),
+    adaptRoute(makeCreateUserController()))
 }
