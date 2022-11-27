@@ -16,6 +16,42 @@ services:
     environment:
       HOST: 0.0.0.0
 
+  #MySQL Container
+  database:
+    image: mariadb:10.3-bionic
+    container_name: 'minimalist-todo-database'
+    tty: true
+    ports:
+      - "3306:3306"
+    expose:
+      - '3306'
+    environment:
+      MYSQL_DATABASE: minimalist_todo
+      MYSQL_ROOT_PASSWORD: secret
+    working_dir: /media
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./.docker/mysql/sqls:/media
+    networks:
+      - app-network
+
+  #PhpMyAdmin Container
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: minimalist-todo-phpmyadmin
+    environment:
+      PMA_HOST: minimalist-todo-database
+      PMA_USER: root
+      PMA_PASSWORD: secret
+      MEMORY_LIMIT: 1024M
+      UPLOAD_LIMIT: 1024M
+    ports:
+      - "8081:80"
+    depends_on:
+      - database
+    networks:
+      - app-network
+
 #Docker Networks
 networks:
   app-network:
