@@ -1,7 +1,7 @@
 import { ProjectStatus } from "@/domain/enums"
 
 export type CreateProjectRequest = {
-    id: number
+    auth_user_id: number
     name: string
     status: ProjectStatus
 }
