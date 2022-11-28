@@ -1,4 +1,4 @@
-import { makeCreateUserController } from '@/main/factories'
+import { makeCreateUserController, makeLoginController } from '@/main/factories'
 import { adaptRoute } from '@/main/adapters'
 import { Router } from 'express'
 const { body, validationResult } = require('express-validator');
@@ -16,4 +16,11 @@ export default (router: Router): void => {
     }),
     body('email').isEmail(),
     adaptRoute(makeCreateUserController()))
+
+  router.post('/users/login', 
+    body('email').not().isEmpty(),
+    body('email').isEmail(),
+    body('password').not().isEmpty(),
+    adaptRoute(makeLoginController())
+  )
 }

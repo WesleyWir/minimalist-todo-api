@@ -1,2 +1,2 @@
-export * from './controllers/create-user-controllers'
+export * from './controllers'
 export * from './usecases/users'

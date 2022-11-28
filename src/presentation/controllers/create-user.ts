@@ -1,6 +1,6 @@
 import { CreateUser } from '@/domain/usecases'
 import { Controller, HttpResponse, serverError, created } from '@/presentation/contracts'
-import { CreateUserRequest } from '@/presentation/requests/create-user'
+import { CreateUserRequest } from '@/presentation/requests'
 
 export class CreateUserController implements Controller {
   constructor (private readonly createUser: CreateUser) {}
