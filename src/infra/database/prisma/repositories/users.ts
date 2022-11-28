@@ -1,5 +1,4 @@
-import { LoadUserByEmailRepository, LoadUserByTokenRepository, UpdateAccessTokenRepository } from "@/data/protocols";
-import { CreateUserRepository } from "@/data/protocols/user/create-user-repository";
+import { CreateUserRepository, LoadUserByEmailRepository, LoadUserByTokenRepository, UpdateAccessTokenRepository } from "@/data/protocols";
 import { prismaClient } from "@/infra/database/prisma/prismaClient";
 import { User } from "@prisma/client";
 

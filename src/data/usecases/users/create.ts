@@ -1,9 +1,8 @@
 
 
 import { Hasher } from '@/data/protocols';
-import { CreateUserRepository } from '@/data/protocols/user/create-user-repository'
+import { CreateUserRepository } from '@/data/protocols'
 import { CreateUser } from '@/domain/usecases'
-import * as bcrypt from 'bcrypt';
 
 export class CreateUserUseCase implements CreateUser {
     constructor(
@@ -12,7 +11,7 @@ export class CreateUserUseCase implements CreateUser {
     ) { }
 
     async create(data: CreateUserRepository.Params): Promise<CreateUserRepository.Result> {
-        const hashedPassword = await bcrypt.hash(data.password, 10);
+        const hashedPassword = await this.hasher.hash(data.password);
         data = {
             name: data.name,
             email: data.email,
