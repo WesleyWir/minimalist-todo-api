@@ -1,4 +1,4 @@
-import { CreateProject, CreateUser } from '@/domain/usecases'
+import { CreateProject } from '@/domain/usecases'
 import { CreateProjectUseCase } from '@/data/usecases'
 import { ProjectsRepository } from '@/infra/database/prisma/repositories'
 

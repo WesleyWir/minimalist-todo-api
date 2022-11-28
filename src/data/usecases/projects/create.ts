@@ -1,6 +1,3 @@
-
-
-import { Hasher } from '@/data/protocols';
 import { CreateProjectRepository } from '@/data/protocols'
 import { CreateProject } from '@/domain/usecases'
 

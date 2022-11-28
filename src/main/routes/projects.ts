@@ -1,4 +1,4 @@
-import { makeCreateProjectController } from '@/main/factories'
+import { makeCreateProjectController, makeDeleteProjectController } from '@/main/factories'
 import { adaptRoute } from '@/main/adapters'
 import { Router } from 'express'
 import { auth } from '@/main/middlewares'
@@ -10,4 +10,9 @@ export default (router: Router): void => {
     auth,
     body('name').not().isEmpty(),
     adaptRoute(makeCreateProjectController()))
+
+  router.delete(
+    '/projects/:id',
+    auth,
+    adaptRoute(makeDeleteProjectController()))
 }
