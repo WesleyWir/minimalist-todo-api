@@ -16,31 +16,16 @@ export class UsersRepository implements CreateUserRepository, LoadUserByEmailRep
     }
 
     async updateAccessToken(id: number, token: string): Promise<void> {
-        let searchedAuthToken = await prismaClient.authToken.findFirst({
+        await prismaClient.authToken.upsert({
             where: {
                 userId: id
-            }
-        })
-
-        if (!searchedAuthToken) {
-            await prismaClient.authToken.create({
-                data: {
-                    userId: id,
-                    accessToken: token,
-                    refreshToken: token
-                },
-                include: {
-                    user: true
-                }
-            });
-            return
-        }
-
-        await prismaClient.authToken.update({
-            where: {
-                id: searchedAuthToken.id,
             },
-            data: {
+            update: {
+                accessToken: token,
+                refreshToken: token,
+            },
+            create: {
+                userId: id,
                 accessToken: token,
                 refreshToken: token
             },
