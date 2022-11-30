@@ -6,7 +6,7 @@ export class DeleteProjectController implements Controller {
 
   async handle (request: any): Promise<HttpResponse<[]>> {
     try {
-      const data = await this.deleteProject.delete(parseInt(request.id), request.userId)
+      const data = await this.deleteProject.delete(parseInt(request.id), request.auth_user_id)
       return ok(data)
     } catch (error) {
       return serverError(error)
