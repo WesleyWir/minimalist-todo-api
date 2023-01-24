@@ -7,7 +7,6 @@ const { body } = require('express-validator');
 export default (router: Router): void => {
   router.post(
     '/users/signup',
-    auth,
     body('name').not().isEmpty(),
     body('password').not().isEmpty(),
     body('password_confirmation').custom((value: any, { req }: any) => {

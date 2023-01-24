@@ -7,7 +7,6 @@ export class CreateProjectController implements Controller {
 
   async handle (request: CreateProjectRequest): Promise<HttpResponse<[]>> {
     try {
-      console.log(request)
       const data = await this.createProject.create(request.auth_user_id, request)
       return created(data)
     } catch (error) {
