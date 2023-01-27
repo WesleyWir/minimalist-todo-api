@@ -1,4 +1,5 @@
 export * from './create-project'
 export * from './load-project'
+export * from './load-projects-by-user'
 export * from './update-project'
 export * from './delete-project'

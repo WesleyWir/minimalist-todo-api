@@ -1,4 +1,5 @@
 export * from './create-project-repository'
 export * from './update-project-repository'
 export * from './load-project-by-id-repository'
+export * from './load-projects-by-user-id-repository'
 export * from './delete-project-repository'

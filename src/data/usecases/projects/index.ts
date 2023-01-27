@@ -1,4 +1,5 @@
 export * from './create'
 export * from './load'
+export * from './load-by-user'
 export * from './update'
 export * from './delete'

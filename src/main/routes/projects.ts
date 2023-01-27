@@ -1,10 +1,14 @@
-import { makeCreateProjectController, makeLoadProjectController, makeDeleteProjectController, makeUpdateProjectController } from '@/main/factories'
+import { makeCreateProjectController, makeLoadProjectController, makeDeleteProjectController, makeUpdateProjectController, makeLoadProjectsByUserController } from '@/main/factories'
 import { adaptRoute } from '@/main/adapters'
 import { Router } from 'express'
 import { auth } from '@/main/middlewares'
 const { body } = require('express-validator');
 
 export default (router: Router): void => {
+  router.get(
+    '/projects/',
+    auth,
+    adaptRoute(makeLoadProjectsByUserController()))
   router.get(
     '/projects/:id',
     auth,
