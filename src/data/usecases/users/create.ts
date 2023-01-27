@@ -1,7 +1,7 @@
 
 
 import { Hasher } from '@/data/protocols';
-import { CreateUserRepository } from '@/data/protocols'
+import { CreateUserRepository, LoadUserByEmailRepository } from '@/data/protocols'
 import { CreateUser } from '@/domain/usecases'
 
 export class CreateUserUseCase implements CreateUser {

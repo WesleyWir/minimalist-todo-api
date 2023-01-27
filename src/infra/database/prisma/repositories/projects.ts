@@ -38,7 +38,10 @@ export class ProjectsRepository implements CreateProjectRepository, UpdateProjec
         return await prismaClient.project.findFirstOrThrow({
             where: {
                 id
-            }
+            },
+            include: {
+                lists: true,
+            },
         })
     }
 }

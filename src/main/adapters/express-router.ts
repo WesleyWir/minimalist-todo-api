@@ -15,6 +15,7 @@ export const adaptRoute = (controller: Controller) => {
       ...(req.params || {}),
       auth_user_id: req.auth_user_id
     }
+
     const httpResponse = await controller.handle(request)
     res.status(httpResponse.statusCode).json(httpResponse.body)
   }

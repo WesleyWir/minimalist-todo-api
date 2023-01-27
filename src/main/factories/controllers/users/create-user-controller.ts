@@ -1,8 +1,9 @@
 import { CreateUserController } from '@/presentation/controllers'
 import { Controller } from '@/presentation/contracts'
-import { makeCreateUserUseCase } from '@/main/factories';
+import { makeCreateUserUseCase, makeLoadUserByEmailUseCase } from '@/main/factories';
 
 export const makeCreateUserController = (): Controller => {
-  const useCase = makeCreateUserUseCase();
-  return new CreateUserController(useCase)
+  const loadUserByEmailUseCase = makeLoadUserByEmailUseCase();
+  const createUserUseCase = makeCreateUserUseCase();
+  return new CreateUserController(createUserUseCase, loadUserByEmailUseCase)
 }

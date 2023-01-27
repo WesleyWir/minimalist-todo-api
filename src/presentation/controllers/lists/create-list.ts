@@ -10,7 +10,7 @@ export class CreateListController implements Controller {
       const data = await this.createList.create(request)
       return created(data)
     } catch (error) {
-      return serverError(error)
+      return error
     }
   }
 }

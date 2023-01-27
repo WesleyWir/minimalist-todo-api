@@ -20,7 +20,7 @@ export const ok = (body: any): HttpResponse => ({
     body
 })
 
-export const badRequest = (error: Error): HttpResponse => ({
+export const badRequest = (error: any): HttpResponse => ({
     statusCode: 400,
     body: error
   })
