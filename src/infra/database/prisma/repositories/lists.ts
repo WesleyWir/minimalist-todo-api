@@ -28,6 +28,7 @@ export class ListsRepository implements CreateListRepository, LoadListByIdReposi
             },
             include: {
                 project: true,
+                todos: true
             },
         })
     }

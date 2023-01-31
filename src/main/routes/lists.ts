@@ -1,4 +1,4 @@
-import { makeCreateListController, makeDeleteListController } from '@/main/factories'
+import { makeCreateListController, makeDeleteListController, makeLoadListController } from '@/main/factories'
 import { adaptRoute } from '@/main/adapters'
 import { Router } from 'express'
 import { auth } from '@/main/middlewares'
@@ -12,7 +12,11 @@ export default (router: Router): void => {
     body('project_id').not().isEmpty(),
     adaptRoute(makeCreateListController()))
 
-  
+  router.get(
+    '/lists/:id',
+    auth,
+    adaptRoute(makeLoadListController()))
+
   router.delete(
     '/lists/:id',
     auth,
