@@ -7,7 +7,7 @@ export class UpdateTodoController implements Controller {
 
   async handle (request: UpdateTodoRequest): Promise<HttpResponse<[]>> {
     try {
-      const data = await this.updateTodo.update(request.id, request)
+      const data = await this.updateTodo.update(parseInt(request.id), request)
       return created(data)
     } catch (error) {
       return serverError(error)

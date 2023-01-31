@@ -1,18 +1,18 @@
-import { makeCreateTodoController, makeUpdateTodoController } from '@/main/factories'
+import { makeCreateTodoController, makeDeleteTodoController, makeUpdateTodoController } from '@/main/factories'
 import { adaptRoute } from '@/main/adapters'
 import { Router } from 'express'
 import { auth } from '@/main/middlewares'
 const { body } = require('express-validator');
 
 export default (router: Router): void => {
-//   router.get(
-//     '/projects/',
-//     auth,
-//     adaptRoute(makeLoadProjectsByUserController()))
-//   router.get(
-//     '/projects/:id',
-//     auth,
-//     adaptRoute(makeLoadProjectController()))
+  //   router.get(
+  //     '/projects/',
+  //     auth,
+  //     adaptRoute(makeLoadProjectsByUserController()))
+  //   router.get(
+  //     '/projects/:id',
+  //     auth,
+  //     adaptRoute(makeLoadProjectController()))
   router.post(
     '/todos/',
     auth,
@@ -24,4 +24,9 @@ export default (router: Router): void => {
     '/todos/:id',
     auth,
     adaptRoute(makeUpdateTodoController()))
+
+  router.delete(
+    '/todos/:id',
+    auth,
+    adaptRoute(makeDeleteTodoController()))
 }
