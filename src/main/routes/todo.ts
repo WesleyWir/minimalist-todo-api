@@ -1,4 +1,4 @@
-import { makeCreateTodoController } from '@/main/factories'
+import { makeCreateTodoController, makeUpdateTodoController } from '@/main/factories'
 import { adaptRoute } from '@/main/adapters'
 import { Router } from 'express'
 import { auth } from '@/main/middlewares'
@@ -20,8 +20,8 @@ export default (router: Router): void => {
     body('list_id').not().isEmpty(),
     adaptRoute(makeCreateTodoController()))
 
-//   router.put(
-//     '/projects/:id',
-//     auth,
-//     adaptRoute(makeUpdateProjectController()))
+  router.put(
+    '/todos/:id',
+    auth,
+    adaptRoute(makeUpdateTodoController()))
 }
