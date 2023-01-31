@@ -1,4 +1,4 @@
-import { makeCreateUserController, makeLoginController } from '@/main/factories'
+import { makeCreateUserController, makeForgotPasswordController, makeLoginController } from '@/main/factories'
 import { adaptRoute } from '@/main/adapters'
 import { Router } from 'express'
 import { auth } from '@/main/middlewares'
@@ -23,5 +23,11 @@ export default (router: Router): void => {
     body('email').isEmail(),
     body('password').not().isEmpty(),
     adaptRoute(makeLoginController())
+  )
+
+  router.post('/users/forgot', 
+    body('email').not().isEmpty(),
+    body('email').isEmail(),
+    adaptRoute(makeForgotPasswordController())
   )
 }

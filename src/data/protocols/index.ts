@@ -1,4 +1,5 @@
 export * from './cryptography'
+export * from './mail'
 export * from './users'
 export * from './projects'
 export * from './lists'
