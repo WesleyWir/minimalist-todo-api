@@ -1,7 +1,6 @@
 import { makeCreateUserController, makeForgotPasswordController, makeLoginController } from '@/main/factories'
 import { adaptRoute } from '@/main/adapters'
 import { Router } from 'express'
-import { auth } from '@/main/middlewares'
 const { body } = require('express-validator');
 
 export default (router: Router): void => {
